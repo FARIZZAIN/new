@@ -31,14 +31,21 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post("http://localhost:4002/logins", { username, password });
-        if(response.data === "success") {
-          alert("Login Successful")
-          navigate('/')
-        }
+      
+      if (response.data === "success") {
+        // Store the username and optionally the auth token
+        localStorage.setItem('username', username);
+        localStorage.setItem('authToken', 'your-auth-token'); // Replace with actual token if available
+
+        alert("Login Successful");
+        // Navigate to home or any other page if needed, otherwise, no redirect
+        navigate('/'); // Redirect to home page or any other page
+      } else {
+        setError("Login failed. Please try again.");
+      }
     } catch (error) {
-      setError(error.response.data.error);
-    }
-    finally{
+      setError(error.response?.data?.error || "An error occurred. Please try again.");
+    } finally {
       setLoading(false);
     }
   };

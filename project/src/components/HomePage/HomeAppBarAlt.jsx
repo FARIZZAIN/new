@@ -5,9 +5,6 @@ import { useMediaQuery } from "react-responsive";
 import "./HomeAppBarAlt.css";
 import { Box, Typography } from "@mui/material";
 
-// Documentetion : https://blog.logrocket.com/create-responsive-navbar-react-css/
-
-
 const NavbarHook = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: "1150px" });
@@ -25,72 +22,77 @@ const NavbarHook = () => {
     const buttonClassName = "nav__cta";
     return (
       <>
-      <Box sx=
-                {{
-                    flexGrow: 1,
-                    display:'flex',
-                    marginLeft:'500px'
-
-                }}>
-                    <Typography id='HomeAppBarcentertext'>
-                    EventHub-Home
-                    </Typography>
-                </Box>
-      <ul className={listClassName}>
-        <li>
-          <NavLink to="" className={linkClassName} onClick={closeMobileMenu}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/news"
-            className={linkClassName}
-            onClick={closeMobileMenu}
-          >
-            News
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/about-us"
-            className={linkClassName}
-            onClick={closeMobileMenu}
-          >
-            About Us
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/favorite"
-            className={linkClassName}
-            onClick={closeMobileMenu}
-          >
-            Favorite
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/location"
-            className={linkClassName}
-            onClick={closeMobileMenu}
-          >
-            Location
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={`${linkClassName} ${buttonClassName}`}
-            onClick={closeMobileMenu}
-          >
-            Get Started
-          </NavLink>
-        </li>
-      </ul>
+        <Box sx={{ flexGrow: 1, display: 'flex', marginLeft: '500px' }}>
+          <Typography id='HomeAppBarcentertext'>
+            EventHub-Home
+          </Typography>
+        </Box>
+        <ul className={listClassName}>
+          <li>
+            <NavLink to="" className={linkClassName} onClick={closeMobileMenu}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/news"
+              className={linkClassName}
+              onClick={closeMobileMenu}
+            >
+              News
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about-us"
+              className={linkClassName}
+              onClick={closeMobileMenu}
+            >
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/favorite"
+              className={linkClassName}
+              onClick={closeMobileMenu}
+            >
+              Favorite
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/location"
+              className={linkClassName}
+              onClick={closeMobileMenu}
+            >
+              Location
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/login"
+              className={`${linkClassName} ${buttonClassName}`}
+              onClick={closeMobileMenu}
+            >
+              Get Started
+            </NavLink>
+          </li>
+          {/* New Profile Button */}
+          <li>
+            <NavLink
+              to="/profile"
+              className={`${linkClassName} ${buttonClassName}`}
+              onClick={closeMobileMenu}
+            >
+              Profile
+            </NavLink>
+          </li>
+        </ul>
       </>
     );
   };
+
   return (
     <header className="header">
       <nav className="nav container">
@@ -119,4 +121,5 @@ const NavbarHook = () => {
     </header>
   );
 };
+
 export default NavbarHook;

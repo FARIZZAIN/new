@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const [profilePic, setProfilePic] = useState('');
+  const navigate = useNavigate();
 
   const handlePicChange = (e) => {
     const file = e.target.files[0];
@@ -14,6 +15,12 @@ const Sidebar = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (
@@ -30,18 +37,17 @@ const Sidebar = () => {
           {profilePic ? (
             <img src={profilePic} alt="Profile" className="profile-pic" />
           ) : (
-            <div className="default-avatar">👤</div> 
+            <div className="default-avatar">👤</div>
           )}
         </label>
         <div className="profile-name">
-          <h2>FARIS S</h2>
+          <h1>{localStorage.getItem('username')?.toUpperCase()}</h1>
         </div>
       </div>
       <nav className="nav-links">
         <Link to="/profile" className="nav-link">Profile</Link>
-        <Link to="/events" className="nav-link">Events</Link>
-        <Link to="/logout" className="nav-link">Log Out</Link>
-        <Link to="/eventdetails" className='nav-link'>Event Details</Link>
+        <Link to="/registered-events" className="nav-link">My Events</Link> {/* Updated link */}
+        <button onClick={handleLogout} className="logout-btn">Log Out</button>
       </nav>
     </div>
   );
